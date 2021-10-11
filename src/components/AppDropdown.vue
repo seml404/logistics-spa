@@ -12,7 +12,7 @@
         >
           {{ choosenValue }}
         </p>
-        <div :class="isOpen ? '.img-open' : '.img-close'">
+        <div :class="isOpen ? 'img-open' : 'img-close'">
           <img
             src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v1.png"
           />
@@ -25,7 +25,12 @@
             v-for="item in typeName.options"
             :key="item.id"
             @click="
-              (this.choosenValue = item.optionName), (this.isOpen = false)
+              (this.choosenValue = item.optionName),
+                (this.isOpen = false),
+                this.$emit('choosen', {
+                  title: typeName.title,
+                  choosenValue: item.optionName,
+                })
             "
           >
             {{ item.optionName }}
@@ -78,16 +83,14 @@ export default {
 }
 
 .select-top img {
-  width: 8px;
+  width: 15px;
+}
+.img-close {
   transition: all 0.5s ease-out;
 }
 
 .img-open {
-  transform: rotate(90deg);
-  /* -ms-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -webkit-transform: rotate(270deg);
-  -o-transform: rotate(270deg); */
+  transform: rotateX(180deg);
 }
 
 .sub-select {

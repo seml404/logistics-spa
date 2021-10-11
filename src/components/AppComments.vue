@@ -5,18 +5,21 @@
       <p class="default-value">{{ typeName.defaultValue }}</p>
     </div>
     <input
-      v-model="comments"
+      :comments="modelValue"
       v-if="switched"
       type="textarea"
       class="comments-input"
       @mouseout="switchOff"
+      @input="change"
+      v-model="comments"
     />
   </div>
 </template>
 
 <script>
 export default {
-  props: ["typeName"],
+  props: ["typeName", "modelValue"],
+  emits: ["update:modelValue"],
   data() {
     return {
       switched: false,
@@ -33,6 +36,9 @@ export default {
       if (!this.comments) {
         this.switched = false;
       }
+    },
+    change(event) {
+      this.$emit("update:modelValue", event.target.value);
     },
   },
 };

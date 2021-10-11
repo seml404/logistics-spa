@@ -1,12 +1,12 @@
 <template>
-  <div classs="input-section">
+  <div class="temperature-wrapper" v-if="visibility">
     <p class="input-name">{{ typeName.title }}</p>
     <input
+      class="input"
       :class="typeName.class"
-      :placeholder="choosenValue"
       :value="modelValue"
       @input="change"
-      v-on:keyup.enter="this.$emit('submitted')"
+      @keyup.enter="this.$emit('submitted')"
     />
   </div>
 </template>
@@ -14,22 +14,14 @@
 <script>
 export default {
   emits: ["update:modelValue", "submitted"],
-  data() {
-    return {
-      choosenValue: this.typeName.defaultValue,
-    };
-  },
+
   methods: {
     change(event) {
       this.$emit("update:modelValue", event.target.value);
     },
   },
-  props: ["typeName", "modelValue"],
+  props: ["typeName", "modelValue", "visibility"],
 };
 </script>
 
-<style>
-.input-section {
-  margin-bottom: 16px;
-}
-</style>
+<style></style>

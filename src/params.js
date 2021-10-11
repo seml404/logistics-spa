@@ -21,6 +21,7 @@ export default {
     select1: {
       title: "Грузоподъемность",
       defaultValue: "Не выбрана",
+      choosenValue: "",
       options: [
         {
           optionName: "Вариант 1",
@@ -47,6 +48,7 @@ export default {
     },
     select2: {
       title: "Способ погрузки",
+      choosenValue: "",
       defaultValue: "Не выбран",
       options: [
         {
@@ -74,6 +76,7 @@ export default {
     },
     select3: {
       title: "Тип груза",
+      choosenValue: "",
       defaultValue: "Не выбран",
       options: [
         {
@@ -101,6 +104,7 @@ export default {
     },
     select4: {
       title: "Класс опасности",
+      choosenValue: "",
       defaultValue: "Не выбран",
       options: [
         {
@@ -144,5 +148,32 @@ export default {
         "Укажите особенности въезда на территорию склада или подъезда к адресу",
       class: "",
     },
+    input6: {
+      title: "От, °C",
+      defaultValue: "Укажите температуру",
+      class: "",
+    },
+    input7: {
+      title: "До, °C",
+      defaultValue: "Укажите температуру",
+      class: "",
+    },
   },
+  submitted: {
+    from: "",
+    to: "",
+    declaredValue: "",
+  },
+
+  notNecessary: {
+    points: [],
+    comments: "",
+    lowTemperature: "",
+    highTemperature: "",
+  },
+  needTemperature: false,
+  popUpVisible: false,
+  formFilled: false,
+  popUpAlert:
+    "Для расчета стоимости необходимо ввести параметры груза, пункты отправки и прибытия.",
 };

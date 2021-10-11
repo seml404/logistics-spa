@@ -7,7 +7,7 @@
       <p class="addresses__text">Адрес не указан</p>
     </div>
     <div class="address__part address__part_button">
-      <div class="addresses__button" @click="choosen = true">
+      <div class="addresses__button" @click.prevent="choosen = true">
         <a href="#" class="addresses__choose">Не выбрано</a>
       </div>
     </div>
@@ -16,7 +16,7 @@
     type="text"
     class="input address-input"
     v-if="choosen"
-    v-model="addressValue"
+    v-model="pointChoosen"
     @mouseout="checkChoosen"
   />
 </template>
@@ -25,13 +25,13 @@
 export default {
   data() {
     return {
-      addressValue: "",
+      pointChoosen: "",
       choosen: false,
     };
   },
   methods: {
     checkChoosen() {
-      if (!this.addressValue) {
+      if (!this.pointChoosen) {
         this.choosen = false;
       }
     },
